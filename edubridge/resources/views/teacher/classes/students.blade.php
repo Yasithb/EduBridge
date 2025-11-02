@@ -60,6 +60,19 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
         
+        .nav-link {
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            transform: translateX(4px);
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, #137fec 0%, #0a5fc7 100%);
+            color: white;
+        }
+        
         .student-card {
             background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
             border: 1px solid #e2e8f0;
@@ -80,36 +93,150 @@
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 min-h-screen">
-    <div class="flex flex-col min-h-screen">
-        <!-- Header -->
-        <header class="gradient-bg shadow-lg border-b border-primary-dark/20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center space-x-4">
-                        <button onclick="history.back()" class="text-white hover:text-gray-200 transition-colors duration-200">
-                            <span class="material-symbols-outlined text-2xl">arrow_back</span>
-                        </button>
-                        <div>
-                            <h1 class="text-xl font-bold text-white">Class Students</h1>
-                            <p class="text-sm text-blue-100">Mathematics - Grade 10A</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <button class="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-200 flex items-center space-x-2">
-                            <span class="material-symbols-outlined">download</span>
-                            <span class="hidden sm:inline">Export</span>
-                        </button>
-                        <button class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary/90 transition-all duration-200 flex items-center space-x-2">
-                            <span class="material-symbols-outlined">person_add</span>
-                            <span class="hidden sm:inline">Add Student</span>
-                        </button>
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white dark:bg-gray-800 shadow-lg border-r border-gray-200 dark:border-gray-700 hidden lg:flex flex-col">
+            <div class="gradient-bg h-16 flex items-center px-6">
+                <h1 class="text-xl font-bold text-white">EduBridge Teacher</h1>
+            </div>
+            
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <!-- Dashboard -->
+                <a href="/teacher/dashboard" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                
+                <!-- Classes (Active) -->
+                <div class="space-y-1">
+                    <a href="/teacher/classes" class="nav-link active flex items-center gap-3 px-4 py-3 rounded-lg">
+                        <span class="material-symbols-outlined">school</span>
+                        <span class="font-medium">Classes</span>
+                    </a>
+                    <a href="/teacher/classes/students" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-blue-100 bg-primary/20">
+                        <span class="material-symbols-outlined text-sm">groups</span>
+                        <span>View Students</span>
+                    </a>
+                </div>
+                
+                <!-- Attendance -->
+                <div class="space-y-1">
+                    <a href="/teacher/attendance" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined">how_to_reg</span>
+                        <span class="font-medium">Attendance</span>
+                    </a>
+                    <a href="/teacher/attendance/mark" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined text-sm">check_circle</span>
+                        <span>Mark Attendance</span>
+                    </a>
+                </div>
+                
+                <!-- Grades -->
+                <div class="space-y-1">
+                    <a href="/teacher/grades" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined">grade</span>
+                        <span class="font-medium">Grades</span>
+                    </a>
+                    <a href="/teacher/grades/create" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined text-sm">add_circle</span>
+                        <span>Create/Edit Grades</span>
+                    </a>
+                </div>
+                
+                <!-- Homework -->
+                <div class="space-y-1">
+                    <a href="/teacher/homework" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined">assignment</span>
+                        <span class="font-medium">Homework</span>
+                    </a>
+                    <a href="/teacher/homework/create" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined text-sm">add_task</span>
+                        <span>Create Assignment</span>
+                    </a>
+                </div>
+                
+                <!-- Messages -->
+                <div class="space-y-1">
+                    <a href="/teacher/messages" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined">message</span>
+                        <span class="font-medium">Messages</span>
+                    </a>
+                    <a href="/teacher/messages/chat" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined text-sm">chat</span>
+                        <span>Chat</span>
+                    </a>
+                </div>
+                
+                <!-- Reports -->
+                <div class="space-y-1">
+                    <a href="/teacher/reports" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined">analytics</span>
+                        <span class="font-medium">Reports</span>
+                    </a>
+                    <a href="/teacher/reports/generate" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined text-sm">bar_chart</span>
+                        <span>Generate Report</span>
+                    </a>
+                </div>
+                
+                <!-- Announcements -->
+                <div class="space-y-1">
+                    <a href="/teacher/announcements" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined">campaign</span>
+                        <span class="font-medium">Announcements</span>
+                    </a>
+                    <a href="/teacher/announcements/create" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
+                        <span class="material-symbols-outlined text-sm">add_box</span>
+                        <span>Create Announcement</span>
+                    </a>
+                </div>
+                
+                <!-- Settings -->
+                <a href="/teacher/settings" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="font-medium">Settings</span>
+                </a>
+            </nav>
+            
+            <!-- User Profile Section -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Teacher" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">John Doe</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Mathematics Teacher</p>
                     </div>
                 </div>
             </div>
-        </header>
+        </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main class="flex-1 p-6 sm:p-8 md:p-10">
+            <div class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <header class="mb-8 animate-fade-in">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary/10 p-3 rounded-lg">
+                                <span class="material-symbols-outlined text-primary text-2xl">groups</span>
+                            </div>
+                            <div>
+                                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Class Students</h1>
+                                <p class="text-gray-600 dark:text-gray-400">Mathematics - Grade 10A</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button class="bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined">file_download</span>
+                                Export
+                            </button>
+                            <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined">person_add</span>
+                                Add Student
+                            </button>
+                        </div>
+                    </div>
+                </header>
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 animate-fade-in">
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
