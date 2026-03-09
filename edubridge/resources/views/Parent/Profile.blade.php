@@ -62,31 +62,31 @@
 <nav class="flex-grow px-4">
 <ul>
 <li>
-<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="#">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="{{ route('parent.dashboard') }}">
 <span class="material-symbols-outlined">dashboard</span>
 <span>Dashboard</span>
 </a>
 </li>
 <li>
-<a class="flex items-center gap-3 px-4 py-2 rounded-lg bg-primary/10 text-primary font-semibold" href="#">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg bg-primary/10 text-primary font-semibold" href="{{ route('parent.profile') }}">
 <span class="material-symbols-outlined">group</span>
 <span>Students</span>
 </a>
 </li>
 <li>
-<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="#">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="{{ route('parent.tracker') }}">
 <span class="material-symbols-outlined">calendar_today</span>
 <span>Attendance</span>
 </a>
 </li>
 <li>
-<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="#">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="{{ route('parent.messages') }}">
 <span class="material-symbols-outlined">chat</span>
 <span>Messages</span>
 </a>
 </li>
 <li>
-<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="#">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="{{ route('parent.profile') }}">
 <span class="material-symbols-outlined">payment</span>
 <span>Payments</span>
 </a>
@@ -94,7 +94,7 @@
 </ul>
 </nav>
 <div class="p-4">
-<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="#">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-subtle-light dark:text-subtle-dark hover:bg-primary/10 hover:text-primary" href="{{ route('login') }}">
 <span class="material-symbols-outlined">logout</span>
 <span>Logout</span>
 </a>

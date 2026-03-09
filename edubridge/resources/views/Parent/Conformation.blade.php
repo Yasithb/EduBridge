@@ -44,10 +44,10 @@
 </div>
 <div class="flex flex-1 justify-end items-center gap-8">
 <nav class="flex items-center gap-8">
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Dashboard</a>
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Classes</a>
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Attendance</a>
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Messages</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.dashboard') }}">Dashboard</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.dashboard') }}">Classes</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.tracker') }}">Attendance</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.messages') }}">Messages</a>
 </nav>
 <div class="size-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6kEMU2TZCMo_f5gloW5nrFGW5FHKABli0qSD2qdnrBrzgiIgJ-nOoMcKB2MfwBBejYjpXyX5sy72p9C0yndxpLHF65bP_jCWKOa8S_i5l6piXSlJJmuPvPp6ACmP17yc0doEfinXp2_Oi6yZ6nF1BJPv_cJxx0DMLRWJd_Bq5Sq7Bw-3-WiwN4VROn45uBfGxzPbcWjN9rmvl--L-Y0_yRHSRh_hIsePrG56lu90ZU6GPSUyrpif5R8vCwWnV6-f1wJ9jT9jt5nE");'></div>
 </div>

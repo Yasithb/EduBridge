@@ -45,23 +45,23 @@
 <h1 class="text-gray-800 dark:text-white text-base font-medium">Emily Carter</h1>
 </div>
 <nav class="flex flex-col gap-2">
-<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="{{ route('parent.dashboard') }}">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="text-sm font-medium">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="{{ route('parent.dashboard') }}">
 <span class="material-symbols-outlined">class</span>
 <span class="text-sm font-medium">Classes</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 dark:bg-primary/20 text-primary rounded-lg" href="#">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 dark:bg-primary/20 text-primary rounded-lg" href="{{ route('parent.homework') }}">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
 <span class="text-sm font-medium">Homework</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="{{ route('parent.homework') }}">
 <span class="material-symbols-outlined">science</span>
 <span class="text-sm font-medium">Exams</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary rounded-lg" href="{{ route('parent.tracker') }}">
 <span class="material-symbols-outlined">calendar_today</span>
 <span class="text-sm font-medium">Attendance</span>
 </a>

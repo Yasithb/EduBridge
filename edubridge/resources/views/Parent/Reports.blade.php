@@ -55,12 +55,12 @@
 <h1 class="text-xl font-bold text-gray-900 dark:text-white">Academix</h1>
 </div>
 <nav class="hidden md:flex items-center gap-2">
-<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="#">Dashboard</a>
-<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="#">Attendance</a>
-<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="#">Assignments</a>
-<a class="bg-primary/10 text-primary px-3 py-2 rounded-md text-sm font-medium" href="#">Grades</a>
-<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="#">Calendar</a>
-<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="#">Messages</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="{{ route('parent.dashboard') }}">Dashboard</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="{{ route('parent.tracker') }}">Attendance</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="{{ route('parent.homework') }}">Assignments</a>
+<a class="bg-primary/10 text-primary px-3 py-2 rounded-md text-sm font-medium" href="{{ route('parent.reports') }}">Grades</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="{{ route('parent.dashboard') }}">Calendar</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium" href="{{ route('parent.messages') }}">Messages</a>
 </nav>
 <div class="flex items-center">
 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD--ZmGVZ55gyzbO9ax6AJtDGNv5g1ljKdvuNlV03W-BGpsVZHz55sHURkQzi4ZD8BF8D8p7pkhUiuQR0Kh2Y1ztMjAUNwrP-IwvN4UgTN7DrdiClgyoGA9CcNkso4n609vbO__Dk2m5NERSvwxaDB9bF0nQFG8m_9RZDA7mLuZWLSuKEdjAWeLYzLjtVzjBfWPo8B3NWWxXC9NjZjVnqUkrr2fgNAPRz-tHir2-kLK1MdzDodxhVe3TDigMHFEHPZ4W5nJlg9WSq4");'></div>

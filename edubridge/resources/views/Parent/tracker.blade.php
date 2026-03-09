@@ -73,11 +73,11 @@
 <h1 class="text-xl font-bold text-gray-900 dark:text-white">SchoolMate</h1>
 </div>
 <nav class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Dashboard</a>
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Classes</a>
-<a class="text-sm font-medium text-primary dark:text-primary" href="#">Attendance</a>
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Reports</a>
-<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Settings</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.dashboard') }}">Dashboard</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.dashboard') }}">Classes</a>
+<a class="text-sm font-medium text-primary dark:text-primary" href="{{ route('parent.tracker') }}">Attendance</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.reports') }}">Reports</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="{{ route('parent.profile') }}">Settings</a>
 </nav>
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfqxX4PssM8fOogcoH3uqBs6y2a1JYQ3NY2U2ATXWN44gagBSur_cS4hpN2ph-zPrKiVl9wHALuLhCchwQyZSlQkHXV7YCHcFw26OMhPHfsdFBcmbqQAvmpdi_ymdvey3M8fDwAVN6wKjt_xtEQ4ilcYa6jD4hROIunEKnaf3C3yepb3uNK6U_4lc3BBOWFclCXYjmTpfm06cT_JiVp5tk528h7_WrdgihulPifOVvHGNkEzVb-LLFPzVTBGlEn6wX5_tQvtyJz-k");'></div>
