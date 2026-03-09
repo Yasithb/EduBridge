@@ -143,3 +143,38 @@ Route::prefix('teacher')->group(function () {
         return view('teacher.schedule.create');
     })->name('teacher.schedule.create');
 });
+
+// Parent Routes
+Route::prefix('parent')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('Parent.dashboard');
+    })->name('parent.dashboard');
+
+    Route::get('/tracker', function () {
+        return view('Parent.tracker');
+    })->name('parent.tracker');
+
+    Route::get('/reports', function () {
+        return view('Parent.Reports');
+    })->name('parent.reports');
+
+    Route::get('/profile', function () {
+        return view('Parent.Profile');
+    })->name('parent.profile');
+
+    Route::get('/homework', function () {
+        return view('Parent.homework');
+    })->name('parent.homework');
+
+    Route::get('/messages', function () {
+        return view('Parent.messege');
+    })->name('parent.messages');
+
+    Route::get('/notifications', function () {
+        return view('Parent.notification');
+    })->name('parent.notifications');
+
+    Route::get('/confirmation', function () {
+        return view('Parent.Conformation');
+    })->name('parent.confirmation');
+});
