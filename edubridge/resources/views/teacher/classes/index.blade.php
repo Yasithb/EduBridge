@@ -199,3 +199,25 @@
             </section>
         </main>
     </div>
+<div id="create-class-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/45 px-4 py-6">
+        <div class="w-full max-w-2xl rounded-[28px] bg-white p-6 shadow-2xl sm:p-8">
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight text-slate-900">Create New Class</h2>
+                    <p class="mt-1 text-sm text-slate-500">This form adds a visual draft to the page. Connect it to a controller to store the class permanently.</p>
+                </div>
+                <button id="close-create-modal" type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Close dialog">
+                    <span class="material-symbols-outlined text-[20px]">close</span>
+                </button>
+            </div>
+
+            <form id="create-class-form" class="mt-8 grid gap-5 sm:grid-cols-2">
+                <label class="block">
+                    <span class="mb-2 block text-sm font-semibold text-slate-700">Class Name</span>
+                    <input type="text" name="class_name" class="w-full rounded-2xl border border-line px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/15" placeholder="Enter class name" required>
+                </label>
+
+                <label class="block">
+                    <span class="mb-2 block text-sm font-semibold text-slate-700">Subject</span>
+                    <input type="text" name="subject" class="w-full rounded-2xl border border-line px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/15" placeholder="Enter subject" required>
+                </label>
