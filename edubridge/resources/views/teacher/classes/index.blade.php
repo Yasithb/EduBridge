@@ -254,3 +254,93 @@
         </div>
     </div>
 
+<script>
+        const sidebar = document.getElementById('teacher-sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const openSidebarButton = document.getElementById('open-sidebar');
+
+        const createModal = document.getElementById('create-class-modal');
+        const openCreateModalButton = document.getElementById('open-create-modal');
+        const closeCreateModalButton = document.getElementById('close-create-modal');
+        const cancelCreateModalButton = document.getElementById('cancel-create-modal');
+        const createClassForm = document.getElementById('create-class-form');
+        const classesTableBody = document.getElementById('classes-table-body');
+        const classCount = document.getElementById('class-count');
+        const studentCount = document.getElementById('student-count');
+        const createdNotice = document.getElementById('class-created-notice');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        }
+
+        function openCreateModal() {
+            createModal.classList.remove('hidden');
+            createModal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeCreateModal() {
+            createModal.classList.add('hidden');
+            createModal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        openSidebarButton.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        openCreateModalButton.addEventListener('click', openCreateModal);
+        closeCreateModalButton.addEventListener('click', closeCreateModal);
+        cancelCreateModalButton.addEventListener('click', closeCreateModal);
+
+        createModal.addEventListener('click', function (event) {
+            if (event.target === createModal) {
+                closeCreateModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeSidebar();
+                closeCreateModal();
+            }
+        });
+
+        createClassForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(createClassForm);
+            const className = String(formData.get('class_name') || '').trim();
+            const subject = String(formData.get('subject') || '').trim();
+            const gradeLevel = String(formData.get('grade_level') || '').trim();
+            const students = Number(formData.get('students') || 0);
+
+            const row = document.createElement('tr');
+            row.className = 'border-b border-line text-[15px] text-slate-700 transition hover:bg-slate-50/80';
+            row.innerHTML = `
+                <td class="px-6 py-5 font-medium text-slate-900">${className}</td>
+                <td class="px-6 py-5 text-slate-500">${subject}</td>
+                <td class="px-6 py-5 text-slate-500">${gradeLevel}</td>
+                <td class="px-6 py-5 text-slate-500">${students}</td>
+                <td class="px-6 py-5 text-right">
+                    <a href="{{ route('teacher.classes.students') }}" class="font-semibold text-brand transition hover:text-brand-dark">View Students</a>
+                </td>
+            `;
+
+            classesTableBody.prepend(row);
+            classCount.textContent = String(Number(classCount.textContent) + 1);
+            studentCount.textContent = String(Number(studentCount.textContent) + students);
+
+            createdNotice.textContent = `${className} was added to the page as a local preview. Connect this form to a Laravel controller to save it permanently.`;
+            createdNotice.classList.remove('hidden');
+
+            createClassForm.reset();
+            closeCreateModal();
+        });
+    </script>
+</body>
+</html>
