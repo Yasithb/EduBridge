@@ -165,3 +165,37 @@
                     </button>
                 </div>
             </header>
+<section class="px-4 py-6 sm:px-6 lg:px-12 lg:py-8">
+                <div id="class-created-notice" class="mb-6 hidden rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800"></div>
+
+                <div class="overflow-hidden rounded-[22px] border border-line bg-white shadow-panel">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border-collapse">
+                            <thead>
+                                <tr class="border-b border-line bg-white text-left text-sm font-semibold text-slate-700">
+                                    <th class="px-6 py-5">Class Name</th>
+                                    <th class="px-6 py-5">Subject</th>
+                                    <th class="px-6 py-5">Grade Level</th>
+                                    <th class="px-6 py-5">Students</th>
+                                    <th class="px-6 py-5 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="classes-table-body">
+                                @foreach ($classes as $class)
+                                    <tr class="border-b border-line text-[15px] text-slate-700 transition hover:bg-slate-50/80 last:border-b-0">
+                                        <td class="px-6 py-5 font-medium text-slate-900">{{ $class['name'] }}</td>
+                                        <td class="px-6 py-5 text-slate-500">{{ $class['subject'] }}</td>
+                                        <td class="px-6 py-5 text-slate-500">{{ $class['grade'] }}</td>
+                                        <td class="px-6 py-5 text-slate-500">{{ $class['students'] }}</td>
+                                        <td class="px-6 py-5 text-right">
+                                            <a href="{{ route('teacher.classes.students') }}" class="font-semibold text-brand transition hover:text-brand-dark">View Students</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
