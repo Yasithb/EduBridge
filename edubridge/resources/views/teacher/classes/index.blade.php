@@ -141,3 +141,27 @@
             </div>
         </aside>
 
+        <main class="min-w-0">
+            <header class="border-b border-line bg-white/90 backdrop-blur">
+                <div class="flex flex-col gap-5 px-4 py-5 sm:px-6 lg:flex-row lg:items-start lg:justify-between lg:px-12 lg:py-6">
+                    <div class="flex items-start gap-4">
+                        <button id="open-sidebar" type="button" class="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line text-slate-600 transition hover:bg-slate-100 lg:hidden" aria-label="Open navigation">
+                            <span class="material-symbols-outlined text-[22px]">menu</span>
+                        </button>
+                        <div>
+                            <h1 class="text-3xl font-bold tracking-tight text-slate-900">My Classes</h1>
+                            <p class="mt-1 text-base text-slate-500">Manage your classes and view student details.</p>
+                            <p class="mt-2 text-sm font-medium text-slate-400">
+                                <span id="class-count">{{ count($classes) }}</span> active classes
+                                <span class="mx-2">•</span>
+                                <span id="student-count">{{ $totalStudents }}</span> total students
+                            </p>
+                        </div>
+                    </div>
+
+                    <button id="open-create-modal" type="button" class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark focus:outline-none focus:ring-4 focus:ring-brand/20">
+                        <span class="material-symbols-outlined text-[20px]">add</span>
+                        <span>Create New Class</span>
+                    </button>
+                </div>
+            </header>
