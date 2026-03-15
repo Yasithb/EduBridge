@@ -31,3 +31,35 @@
             'students' => 22,
         ],
     ];
+    $navigationItems = [
+        [
+            'label' => 'Dashboard',
+            'icon' => 'dashboard',
+            'href' => route('teacher.dashboard'),
+            'active' => request()->routeIs('teacher.dashboard'),
+        ],
+        [
+            'label' => 'Classes',
+            'icon' => 'school',
+            'href' => route('teacher.classes.index'),
+            'active' => request()->routeIs('teacher.classes.*'),
+        ],
+        [
+            'label' => 'Students',
+            'icon' => 'group',
+            'href' => route('teacher.classes.students'),
+            'active' => request()->routeIs('teacher.classes.students'),
+        ],
+        [
+            'label' => 'Assignments',
+            'icon' => 'assignment',
+            'href' => route('teacher.homework.index'),
+            'active' => request()->routeIs('teacher.homework.*'),
+        ],
+        [
+            'label' => 'Grades',
+            'icon' => 'grade',
+            'href' => route('teacher.grades.index'),
+            'active' => request()->routeIs('teacher.grades.*'),
+        ],
+    ];
