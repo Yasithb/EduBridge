@@ -63,3 +63,37 @@
             'active' => request()->routeIs('teacher.grades.*'),
         ],
     ];
+
+    $totalStudents = array_sum(array_column($classes, 'students'));
+@endphp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Classes - EduBridge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#2186eb',
+                            dark: '#166dca',
+                            soft: '#e8f2ff',
+                        },
+                        page: '#f4f7fb',
+                        ink: '#1f2937',
+                        muted: '#64748b',
+                        line: '#e2e8f0',
+                    },
+                    boxShadow: {
+                        panel: '0 24px 60px -36px rgba(15, 23, 42, 0.35)',
+                    },
+                    fontFamily: {
+                        display: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
