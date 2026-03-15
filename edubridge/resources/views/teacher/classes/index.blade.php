@@ -221,3 +221,36 @@
                     <span class="mb-2 block text-sm font-semibold text-slate-700">Subject</span>
                     <input type="text" name="subject" class="w-full rounded-2xl border border-line px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/15" placeholder="Enter subject" required>
                 </label>
+                <label class="block">
+                    <span class="mb-2 block text-sm font-semibold text-slate-700">Grade Level</span>
+                    <select name="grade_level" class="w-full rounded-2xl border border-line px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/15" required>
+                        <option value="">Select a grade</option>
+                        <option>8th Grade</option>
+                        <option>9th Grade</option>
+                        <option>10th Grade</option>
+                        <option>11th Grade</option>
+                        <option>12th Grade</option>
+                    </select>
+                </label>
+
+                <label class="block">
+                    <span class="mb-2 block text-sm font-semibold text-slate-700">Student Count</span>
+                    <input type="number" min="1" name="students" class="w-full rounded-2xl border border-line px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/15" placeholder="Enter student count" required>
+                </label>
+
+                <label class="block sm:col-span-2">
+                    <span class="mb-2 block text-sm font-semibold text-slate-700">Class Notes</span>
+                    <textarea name="notes" rows="4" class="w-full rounded-2xl border border-line px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/15" placeholder="Add a short note about the class schedule or focus area"></textarea>
+                </label>
+
+                <div class="flex items-center justify-end gap-3 sm:col-span-2">
+                    <button id="cancel-create-modal" type="button" class="inline-flex items-center justify-center rounded-xl border border-line px-5 py-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-100">Cancel</button>
+                    <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark">
+                        <span class="material-symbols-outlined text-[20px]">done</span>
+                        <span>Add Draft Class</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
