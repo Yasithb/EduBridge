@@ -1,263 +1,312 @@
+@php
+    $menuItems = [
+        [
+            'label' => 'Dashboard',
+            'icon' => 'home',
+            'href' => route('teacher.dashboard'),
+            'active' => false,
+        ],
+        [
+            'label' => 'Classes',
+            'icon' => 'calendar_month',
+            'href' => route('teacher.classes.index'),
+            'active' => false,
+        ],
+        [
+            'label' => 'Students',
+            'icon' => 'group',
+            'href' => route('teacher.classes.students'),
+            'active' => false,
+        ],
+        [
+            'label' => 'Homework',
+            'icon' => 'description',
+            'href' => route('teacher.homework.index'),
+            'active' => true,
+        ],
+        [
+            'label' => 'Attendance',
+            'icon' => 'event_available',
+            'href' => route('teacher.attendance.index'),
+            'active' => false,
+        ],
+    ];
+
+    $homeworks = [
+        [
+            'id' => 1,
+            'title' => 'Algebra I - Chapter 5 Problems',
+            'class' => 'Grade 9 - B',
+            'subject' => 'Mathematics',
+            'dueDate' => '2026-03-22',
+            'submissions' => 28,
+            'total' => 30,
+            'status' => 'Active',
+        ],
+        [
+            'id' => 2,
+            'title' => 'Essay on The Great Gatsby',
+            'class' => 'Grade 10 - A',
+            'subject' => 'English',
+            'dueDate' => '2026-03-25',
+            'submissions' => 22,
+            'total' => 25,
+            'status' => 'Active',
+        ],
+        [
+            'id' => 3,
+            'title' => 'Photosynthesis Lab Report',
+            'class' => 'Grade 10 - A',
+            'subject' => 'Science',
+            'dueDate' => '2026-03-20',
+            'submissions' => 24,
+            'total' => 25,
+            'status' => 'Due Soon',
+        ],
+        [
+            'id' => 4,
+            'title' => 'Programming Assignment - Python Loops',
+            'class' => 'Grade 11 - B',
+            'subject' => 'ICT',
+            'dueDate' => '2026-03-18',
+            'submissions' => 18,
+            'total' => 20,
+            'status' => 'Overdue',
+        ],
+    ];
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework - EduBridge Teacher Portal</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Homework - EduBridge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#137fec',
-                        'primary-dark': '#0a5fc7',
-                    }
-                }
-            }
-        }
+                        canvas: '#f5f7fb',
+                        panel: '#ffffff',
+                        stroke: '#d6dbe4',
+                        brand: '#2583ea',
+                        'brand-dark': '#1768bf',
+                        'brand-soft': '#e7f1ff',
+                        text: '#111827',
+                        muted: '#6b7280',
+                    },
+                    fontFamily: {
+                        display: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        card: '0 18px 40px -28px rgba(15, 23, 42, 0.28)',
+                    },
+                },
+            },
+        };
     </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #137fec 0%, #0a5fc7 100%);
-        }
-        
-        .sidebar {
-            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link {
-            transition: all 0.2s ease;
-        }
-        
-        .nav-link:hover {
-            transform: translateX(4px);
-        }
-        
-        .nav-link.active {
-            background: linear-gradient(135deg, #137fec 0%, #0a5fc7 100%);
-            color: white;
-        }
-        
-        .stats-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .stats-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(19, 127, 236, 0.15);
-        }
-
-        .form-select {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center;
-            background-repeat: no-repeat;
-            background-size: 1.5em 1.5em;
-            padding-right: 2.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar.active {
-                transform: translateX(0);
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
-<body class="bg-gray-50">
-    <!-- Mobile Menu Button -->
-    <div class="md:hidden bg-white p-4 border-b">
-        <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary">
-            <i class="material-icons text-2xl">menu</i>
-        </button>
-    </div>
+<body class="min-h-screen bg-canvas font-display text-text antialiased">
+    <div id="sidebar-overlay" class="fixed inset-0 z-30 hidden bg-slate-900/45 lg:hidden"></div>
 
-    <div class="flex min-h-screen">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar fixed md:relative z-30 w-64 bg-white h-full overflow-y-auto">
-            <div class="gradient-bg h-16 flex items-center px-6">
-                <h1 class="text-xl font-bold text-white">EduBridge Teacher</h1>
+    <div class="min-h-screen lg:grid lg:grid-cols-[244px_minmax(0,1fr)]">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-[244px] -translate-x-full flex-col border-r border-slate-200 bg-panel transition-transform duration-300 ease-out lg:static lg:translate-x-0">
+            <div class="px-6 pt-7 pb-6">
+                <h1 class="text-2xl font-extrabold tracking-tight text-slate-900">EduBridge School</h1>
             </div>
-            
-            <nav class="p-4 space-y-2">
-                <!-- Dashboard -->
-                <a href="/teacher/dashboard" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                    <i class="material-icons text-xl">dashboard</i>
-                    <span>Dashboard</span>
-                </a>
 
-                <!-- Classes -->
-                <div>
-                    <a href="/teacher/classes" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-xl">class</i>
-                        <span>Classes</span>
+            <nav class="space-y-2 px-4">
+                @foreach ($menuItems as $item)
+                    <a
+                        href="{{ $item['href'] }}"
+                        class="flex items-center gap-3 rounded-lg px-4 py-3 text-base font-medium transition {{ $item['active'] ? 'bg-brand text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' }}"
+                    >
+                        <span class="material-symbols-outlined text-[20px]">{{ $item['icon'] }}</span>
+                        <span>{{ $item['label'] }}</span>
                     </a>
-                    <a href="/teacher/classes/students" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-lg">people</i>
-                        <span>Students</span>
-                    </a>
-                </div>
-
-                <!-- Attendance -->
-                <div>
-                    <a href="/teacher/attendance" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-xl">fact_check</i>
-                        <span>Attendance</span>
-                    </a>
-                    <a href="/teacher/attendance/mark" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-lg">edit</i>
-                        <span>Mark Attendance</span>
-                    </a>
-                </div>
-
-                <!-- Grades -->
-                <div>
-                    <a href="/teacher/grades" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-xl">grade</i>
-                        <span>Grades</span>
-                    </a>
-                    <a href="/teacher/grades/create" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-lg">add</i>
-                        <span>Create Grades</span>
-                    </a>
-                </div>
-
-                <!-- Homework -->
-                <div>
-                    <a href="/teacher/homework" class="nav-link active flex items-center gap-3 px-4 py-3 rounded-lg">
-                        <i class="material-icons text-xl">assignment</i>
-                        <span>Homework</span>
-                    </a>
-                    <a href="/teacher/homework/create" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-lg">add</i>
-                        <span>Create Homework</span>
-                    </a>
-                </div>
-
-                <!-- Messages -->
-                <div>
-                    <a href="/teacher/messages" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-xl">message</i>
-                        <span>Messages</span>
-                    </a>
-                    <a href="/teacher/messages/chat" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-lg">chat</i>
-                        <span>Chat</span>
-                    </a>
-                </div>
-
-                <!-- Reports -->
-                <div>
-                    <a href="/teacher/reports" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-xl">assessment</i>
-                        <span>Reports</span>
-                    </a>
-                    <a href="/teacher/reports/generate" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-lg">description</i>
-                        <span>Generate Reports</span>
-                    </a>
-                </div>
-
-                <!-- Announcements -->
-                <div>
-                    <a href="/teacher/announcements" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-xl">campaign</i>
-                        <span>Announcements</span>
-                    </a>
-                    <a href="/teacher/announcements/create" class="nav-link flex items-center gap-3 px-8 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20">
-                        <i class="material-icons text-lg">add</i>
-                        <span>Create Announcement</span>
-                    </a>
-                </div>
-
-                <!-- Settings -->
-                <a href="/teacher/settings" class="nav-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20">
-                    <i class="material-icons text-xl">settings</i>
-                    <span>Settings</span>
-                </a>
+                @endforeach
             </nav>
-
-            <!-- User Profile -->
-            <div class="absolute bottom-4 left-4 right-4">
-                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                        <span class="text-white text-sm font-bold">JD</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate">John Doe</p>
-                        <p class="text-xs text-gray-500 truncate">Mathematics Teacher</p>
-                    </div>
-                </div>
-            </div>
         </aside>
-<        <!-- Main Content -->
-        <main class="flex-1 md:ml-0 p-6 bg-gray-50">
-            <!-- Header -->
-            <div class="mb-8">
-                <div class="flex items-center justify-between">
+
+        <main class="min-w-0">
+            <header class="px-4 py-4 lg:hidden">
+                <button id="open-sidebar" type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600">
+                    <span class="material-symbols-outlined text-[22px]">menu</span>
+                </button>
+            </header>
+
+            <section class="px-4 pb-12 sm:px-8 lg:px-8 lg:pt-8 xl:px-8">
+                <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900">Homework Management</h1>
-                        <p class="text-gray-600 mt-2">Create and manage homework assignments for your classes</p>
+                        <h2 class="text-[42px] font-extrabold tracking-[-0.03em] text-slate-900">Homework Assignments</h2>
+                        <p class="mt-1 text-base text-muted">Manage and track all your homework assignments</p>
                     </div>
-                    <a href="/teacher/homework/create" class="bg-primary text-white font-medium py-3 px-6 rounded-lg flex items-center gap-2 hover:bg-primary-dark transition-colors">
-                        <i class="material-icons">add</i>
+
+                    <a href="{{ route('teacher.homework.create') }}" class="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-sm font-semibold text-white transition hover:bg-brand-dark">
+                        <span class="material-symbols-outlined text-[19px]">add</span>
                         <span>New Homework</span>
                     </a>
                 </div>
-            </div>
 
-            <!-- Stats Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <div class="stats-card rounded-xl p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-2xl font-bold text-gray-900">24</p>
-                            <p class="text-sm text-gray-600">Active Assignments</p>
+                <!-- Stats Grid -->
+                <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="rounded-2xl bg-white p-5 shadow-card ring-1 ring-slate-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-muted">Active</p>
+                                <p class="mt-1 text-2xl font-bold text-slate-900">24</p>
+                            </div>
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+                                <span class="material-symbols-outlined text-xl text-blue-600">assignment</span>
+                            </div>
                         </div>
-                        <div class="p-3 bg-blue-100 rounded-full">
-                            <i class="material-icons text-blue-600">assignment</i>
+                    </div>
+
+                    <div class="rounded-2xl bg-white p-5 shadow-card ring-1 ring-slate-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-muted">Submissions</p>
+                                <p class="mt-1 text-2xl font-bold text-slate-900">156</p>
+                            </div>
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
+                                <span class="material-symbols-outlined text-xl text-emerald-600">check_circle</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl bg-white p-5 shadow-card ring-1 ring-slate-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-muted">Due Soon</p>
+                                <p class="mt-1 text-2xl font-bold text-slate-900">5</p>
+                            </div>
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
+                                <span class="material-symbols-outlined text-xl text-amber-600">schedule</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl bg-white p-5 shadow-card ring-1 ring-slate-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-muted">Overdue</p>
+                                <p class="mt-1 text-2xl font-bold text-slate-900">3</p>
+                            </div>
+                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-red-100">
+                                <span class="material-symbols-outlined text-xl text-red-600">error</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="stats-card rounded-xl p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-2xl font-bold text-gray-900">156</p>
-                            <p class="text-sm text-gray-600">Submissions</p>
-                        </div>
-                        <div class="p-3 bg-green-100 rounded-full">
-                            <i class="material-icons text-green-600">check_circle</i>
-                        </div>
+                <!-- Homework Table -->
+                <div class="mt-8 rounded-3xl bg-white shadow-card ring-1 ring-slate-100">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-slate-200">
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-slate-600">Title</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-slate-600">Class & Subject</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-slate-600">Due Date</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-slate-600">Submissions</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-slate-600">Status</th>
+                                    <th class="px-6 py-4 text-right text-sm font-semibold text-slate-600">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                @foreach ($homeworks as $hw)
+                                    <tr class="transition hover:bg-slate-50">
+                                        <td class="px-6 py-4">
+                                            <p class="font-medium text-slate-900">{{ $hw['title'] }}</p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="space-y-1">
+                                                <p class="text-sm text-slate-600">{{ $hw['class'] }}</p>
+                                                <p class="text-xs text-muted">{{ $hw['subject'] }}</p>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <p class="text-sm text-slate-600">{{ \Carbon\Carbon::parse($hw['dueDate'])->format('M d, Y') }}</p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center gap-2">
+                                                <div class="h-2 w-32 overflow-hidden rounded-full bg-slate-200">
+                                                    <div class="h-full bg-brand" style="width: {{ ($hw['submissions'] / $hw['total']) * 100 }}%"></div>
+                                                </div>
+                                                <p class="text-sm font-medium text-slate-600">{{ $hw['submissions'] }}/{{ $hw['total'] }}</p>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            @if ($hw['status'] === 'Active')
+                                                <span class="inline-flex items-center gap-2 rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+                                                    <span class="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+                                                    Active
+                                                </span>
+                                            @elseif ($hw['status'] === 'Due Soon')
+                                                <span class="inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
+                                                    <span class="h-1.5 w-1.5 rounded-full bg-amber-600"></span>
+                                                    Due Soon
+                                                </span>
+                                            @elseif ($hw['status'] === 'Overdue')
+                                                <span class="inline-flex items-center gap-2 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700">
+                                                    <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+                                                    Overdue
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex justify-end">
+                                                <div class="flex items-center gap-2">
+                                                    <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                                                        <span class="material-symbols-outlined text-[18px]">edit</span>
+                                                    </button>
+                                                    <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-50">
+                                                        <span class="material-symbols-outlined text-[18px]">delete</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </section>
+        </main>
+    </div>
 
-                <div class="stats-card rounded-xl p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-2xl font-bold text-gray-900">18</p>
-                            <p class="text-sm text-gray-600">Pending Review</p>
-                        </div>
-                        <div class="p-3 bg-yellow-100 rounded-full">
-                            <i class="material-icons text-yellow-600">pending</i>
-                        </div>
-                    </div>
-                </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const openSidebarButton = document.getElementById('open-sidebar');
 
-                <div class="stats-card rounded-xl p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-2xl font-bold text-gray-900">7</p>
-                            <p class="text-sm text-gray-600">Due Today</p>
-                        </div>
-                        <div class="p-3 bg-red-100 rounded-full">
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        }
+
+        openSidebarButton.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeSidebar();
+            }
+        });
+    </script>
+</body>
+</html>
                             <i class="material-icons text-red-600">schedule</i>
                         </div>
                     </div>
